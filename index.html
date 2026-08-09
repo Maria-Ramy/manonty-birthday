@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+<title>Our Story — Happy Birthday</title>
+
+<!-- Fonts: Cormorant Garamond (display serif), Caveat (handwritten), Mulish (body) -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Caveat:wght@500;600;700&family=Mulish:wght@400;500;600&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- =========================================================
+     BACKGROUND MUSIC
+     Replace assets/music.mp3 with your own song.
+     Music starts after the visitor's first tap/click,
+     then keeps playing across every section.
+========================================================= -->
+<audio id="bg-music" src="assets/music.mp3" loop preload="auto"></audio>
+
+<button id="music-toggle" aria-label="Toggle music" title="Music on / off">🔈</button>
+
+<div id="progress-dots">
+  <span class="dot active" data-screen="0"></span>
+  <span class="dot" data-screen="1"></span>
+  <span class="dot" data-screen="2"></span>
+  <span class="dot" data-screen="3"></span>
+  <span class="dot" data-screen="4"></span>
+  <span class="dot" data-screen="5"></span>
+</div>
+
+<div id="app">
+
+  <!-- =========================================================
+       PAGE 1 — BIRTHDAY BOY INTRO
+  ========================================================= -->
+  <section class="screen active" id="screen-intro" data-index="0">
+    <div class="sparkle-field" id="sparkle-intro"></div>
+    <div class="intro-card">
+      <span class="eyebrow-script script">a little story, just for you</span>
+      <h1 class="title-main">Birthday <span>Boy</span></h1>
+
+      <div class="polaroid">
+        <div class="tape gold"></div>
+        <!-- EDIT HERE 1: Replace assets/images/birthday-boy.jpg with your favorite photo of him -->
+        <img src="assets/images/birthday-boy.jpg" alt="Birthday boy photo">
+        <div class="cap script">him. obviously.</div>
+      </div>
+
+      <!-- EDIT HERE: change this little handwritten line whenever you like -->
+      <span class="handwritten-line script">Your birthday story starts here...</span>
+      <div style="margin-top:2rem;">
+        <button class="btn-primary" id="btn-to-question">Let's Start</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- =========================================================
+       PAGE 2 — THE FUNNY QUESTION
+  ========================================================= -->
+  <section class="screen" id="screen-question" data-index="1">
+    <div class="floating-hearts" id="hearts-question"></div>
+    <div class="question-wrap">
+      <span class="question-emoji">🧐</span>
+      <!-- EDIT HERE: change the question text -->
+      <h2 class="question-text">Will you call me<br><em class="script" style="font-style:normal;">"marmortyy"</em>?</h2>
+
+      <div class="answer-row">
+        <button class="btn-primary" id="btn-yes">YES</button>
+        <span class="no-wrap-fixed"></span>
+        <button class="btn-ghost" id="btn-no">NO</button>
+      </div>
+      <p class="taunt-msg script" id="taunt-msg"></p>
+    </div>
+
+    <div class="confirm-overlay" id="confirm-overlay">
+      <div>
+        <p class="big-text">Well... good choice 😈</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- =========================================================
+       PAGE 3 — BOOK COVER
+  ========================================================= -->
+  <section class="screen" id="screen-bookcover" data-index="2">
+    <div class="sparkle-field" id="sparkle-cover"></div>
+    <div class="cover-wrap">
+      <p class="section-title-serif script">our memories, page by page</p>
+      <div class="book-cover" id="book-cover">
+        <div class="tape rose" style="top:-14px; right:14px; transform:rotate(8deg);"></div>
+        <!-- EDIT HERE 2: Replace assets/images/book-cover.jpg with a photo of you two -->
+        <img class="cover-photo" src="assets/images/book-cover.jpg" alt="Book cover photo">
+        <!-- EDIT HERE: change the memory book title -->
+        <p class="cover-title script">Us, Page by Page</p>
+        <p class="cover-sub">a scrapbook of us</p>
+      </div>
+      <button class="btn-primary" id="btn-open-book">Open Memory Book</button>
+    </div>
+  </section>
+
+  <!-- =========================================================
+       PAGE 3A — INTERACTIVE MEMORY BOOK
+  ========================================================= -->
+  <section class="screen" id="screen-book" data-index="3">
+    <div class="book-heading">
+      <p class="section-title-serif script">our memories, page by page</p>
+      <p class="swipe-hint script">tap or swipe to turn the pages</p>
+    </div>
+
+    <div class="book-stage" id="book-stage">
+      <div class="book-frame">
+        <div class="spine-shadow"></div>
+
+        <!-- SPREAD 1 : layout A (photo-top / story-top) -->
+        <div class="spread-layer z-current" id="spread-1" data-spread="0">
+          <div class="page page-left">
+            <div class="layout-photo-top">
+              <div class="mem-photo-wrap">
+                <!-- EDIT HERE 3: memory-1.jpg -->
+                <img src="assets/images/memory-1.jpg" alt="Memory 1">
+              </div>
+              <div class="mem-text">
+                <!-- EDIT HERE: memory caption -->
+                <p class="mem-caption script">our first photo ( yom ma el 5eta ng7t hehe )</p>
+              </div>
+            </div>
+          </div>
+          <div class="page page-right">
+            <div class="layout-story-top">
+              <div class="mem-photo-wrap">
+                <!-- EDIT HERE 3: memory-2.jpg -->
+                <img src="assets/images/memory-2.jpg" alt="Memory 2">
+              </div>
+              <div class="mem-text">
+                <p class="mem-caption script">our sora selfie a333</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- SPREAD 2 : layout B (side by side) -->
+        <div class="spread-layer z-next" id="spread-2" data-spread="1">
+          <div class="page page-left">
+            <div class="layout-side">
+              <div class="mem-photo-wrap">
+                <!-- EDIT HERE 3: memory-3.jpg -->
+                <img src="assets/images/memory-3.jpg" alt="Memory 3">
+              </div>
+              <div class="mem-text">
+                <p class="mem-caption script">b7b el sora dy awy</p>
+              </div>
+            </div>
+          </div>
+          <div class="page page-right">
+            <div class="layout-side reverse">
+              <div class="mem-photo-wrap">
+                <!-- EDIT HERE 3: memory-4.jpg — no photo added yet, replace this file -->
+                <img src="assets/images/memory-4.jpg" alt="Memory 4">
+              </div>
+              <div class="mem-text">
+                <p class="mem-caption script">dy a7la sora 5dnaha</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- SPREAD 3 : layout C (centered / text-heavy) -->
+        <div class="spread-layer z-hidden" id="spread-3" data-spread="2">
+          <div class="page page-left">
+            <div class="layout-centered">
+              <div class="mem-photo-wrap">
+                <!-- EDIT HERE 3: memory-5.jpg — no photo added yet, replace this file -->
+                <img src="assets/images/memory-5.jpg" alt="Memory 5">
+              </div>
+              <p class="mem-caption script">kont amr amr amr fl yom daa</p>
+            </div>
+          </div>
+          <div class="page page-right">
+            <div class="layout-textheavy">
+              <div class="mem-text">
+                <p class="mem-caption script">wl yom da kmaaan ( n5tm biha b2aa 34an ba2y el swr 3ndk llasf )</p>
+              </div>
+              <div class="mem-photo-wrap">
+                <!-- EDIT HERE 3: memory-6.jpg — no photo added yet, replace this file -->
+                <img src="assets/images/memory-6.jpg" alt="Memory 6">
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="book-nav">
+      <button class="arrow-btn" id="btn-prev-page" disabled aria-label="Previous page">←</button>
+      <span class="spread-indicator script" id="spread-indicator">Spread 1 / 3</span>
+      <button class="arrow-btn" id="btn-next-page" aria-label="Next page">→</button>
+    </div>
+    <div class="book-continue-wrap">
+      <button class="btn-primary" id="btn-book-continue" style="display:none;">Continue</button>
+    </div>
+  </section>
+
+  <!-- =========================================================
+       PAGE 4 — TIMELINE / PHASES OF YOUR MOON
+  ========================================================= -->
+  <section class="screen" id="screen-timeline" data-index="4">
+    <div class="timeline-heading">
+      <!-- EDIT HERE: timeline section title -->
+      <p class="section-title-serif">Phases of Your Moon</p>
+      <p class="timeline-sub script">from little moon to full moon</p>
+    </div>
+
+    <div class="timeline-scroll" id="timeline-scroll">
+      <div class="timeline-track" id="timeline-track">
+        <!-- Timeline items are generated by script.js from the TIMELINE_DATA array
+             so you can add/remove phases easily. See script.js -> TIMELINE_DATA -->
+      </div>
+    </div>
+
+    <div class="timeline-continue">
+      <button class="btn-primary" id="btn-timeline-continue">Continue</button>
+    </div>
+  </section>
+
+  <!-- =========================================================
+       PAGE 5 — FINAL BIRTHDAY LETTER
+  ========================================================= -->
+  <section class="screen" id="screen-final" data-index="5">
+    <div class="glow-behind"></div>
+    <div class="floating-hearts" id="hearts-final"></div>
+
+    <div class="final-heading">
+      <!-- EDIT HERE: final destination heading -->
+      <h2 class="script">Finally, we reached the final page.</h2>
+    </div>
+
+    <div class="letter-card" id="letter-card">
+      <div class="tape gold"></div>
+      <p class="to-name">Happy Birthday, Manonty 🤍</p>
+      <div class="letter-body" id="letter-body">And finally… we reached the last page.
+
+I honestly don't know where to start, because somehow all these pages still don't feel enough to tell you how much you mean to me.
+
+From all the random moments, the stupid jokes, the laughs, the little conversations, and all the memories we've made together, I'm just really grateful that you're part of my life.
+
+You're someone who makes ordinary days feel a little more special, and I hope you know how loved, appreciated, and important you are to me.
+
+Today is your day, so I hope this new year of your life brings you everything you're wishing for, all the happiness you deserve, and a million reasons to smile.
+
+I hope you keep growing, achieving everything you dream about, and becoming the person you're meant to be. And I hope I get to be there for many more of your birthdays, memories, stupid jokes, and random adventures.
+
+So, after all these pages…
+Happy Birthday to my favorite person. 🤍
+
+Here's to another year of you, another year of us, and many more memories waiting to be written.
+
+Happy Birthday, Manonty. 🫶🏻</div>
+      <!-- EDIT HERE: sender name -->
+      <p class="letter-sign">With all my love,<br>Maria 🤍</p>
+    </div>
+  </section>
+
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
